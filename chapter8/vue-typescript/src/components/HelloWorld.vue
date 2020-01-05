@@ -65,6 +65,12 @@ export default Vue.extend({
   computed: {
     greet(): string {
       return 'hello world';
+    },
+    getDoneTodos(): boolean {
+      if (this.doneTodos === null) {
+        return false;
+      }
+      return this.doneTodos;
     }
   },
   methods: {
