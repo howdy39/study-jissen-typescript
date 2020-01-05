@@ -26,17 +26,44 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <pre>{{obj}}</pre>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue,{PropType} from 'vue';
+
+export type Todo = {
+  id: string
+}
+export type Data = {
+  doneTodos: null | boolean,
+  todos: Todo[]
+}
 
 export default Vue.extend({
   name: 'HelloWorld',
   props: {
     msg: String,
+    obj: {
+      type: Object as PropType<{ name: string}>,
+      required: true
+    },
   },
+  data: (): Data => ({
+    // doneTodos: null as null | boolean,
+    // todos: [] as Array<{
+    //     id: string
+    // }>
+    doneTodos: null,
+    todos: []
+  }),
+  methods: {
+    hoge() {
+      this.doneTodos = true; // Type '"hoge"' is not assignable to type 'null'.
+      this.todos.push({id: 'hoge'}); // Argument of type '"hoge"' is not assignable to parameter of type 'never'.
+    }
+  }
 });
 </script>
 
