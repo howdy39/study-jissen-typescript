@@ -62,6 +62,11 @@ export default Vue.extend({
     doneTodos: null,
     todos: []
   }),
+  computed: {
+    greet(): string {
+      return 'hello world';
+    }
+  },
   methods: {
     hoge() {
       this.doneTodos = true; // Type '"hoge"' is not assignable to type 'null'.
