@@ -33,10 +33,14 @@
 <script lang="ts">
 import Vue,{PropType} from 'vue';
 
-export type Todo = {
+export type HelloWorldObjProps = {
+  name: string
+}
+
+type Todo = {
   id: string
 }
-export type Data = {
+type Data = {
   doneTodos: null | boolean,
   todos: Todo[]
 }
@@ -46,7 +50,7 @@ export default Vue.extend({
   props: {
     msg: String,
     obj: {
-      type: Object as PropType<{ name: string}>,
+      type: Object as PropType<HelloWorldObjProps>,
       required: true
     },
   },
